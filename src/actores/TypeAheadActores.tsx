@@ -1,0 +1,105 @@
+import { Typeahead } from "react-bootstrap-typeahead";
+import { ActorPeliculaDTO } from "./actores.model";
+import { ReactElement, useState } from "react";
+
+interface Props {
+  actores: ActorPeliculaDTO[];
+  onAdd(actores: ActorPeliculaDTO[]): void;
+  listadoUI(actor: ActorPeliculaDTO): ReactElement;
+}
+
+export default function TypeAheadActores({
+  actores: actoresProps,
+  onAdd,
+  listadoUI,
+}: Props) {
+  const actores: ActorPeliculaDTO[] = [
+    {
+      id: 1,
+      nombre: "Tom Holland",
+      personaje: "",
+      foto: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSBuKPDoV-RACKldIeB99TVSdpmlFPH2WU2kOKDuUjuLWyYvP2D",
+    },
+    {
+      id: 2,
+      nombre: "Elizabeth",
+      personaje: "",
+      foto: "https://images4.alphacoders.com/912/912726.jpg",
+    },
+    {
+      id: 3,
+      nombre: "Juan Herrera",
+      personaje: "",
+      foto: "data:image/webp;base64,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",
+    },
+  ];
+
+  const seleccion: ActorPeliculaDTO[] = [];
+
+  const [elementoArrastrado, setElementoArrastrado] = useState<
+    ActorPeliculaDTO | undefined
+  >(undefined);
+
+  function manejarDragStart(actor: ActorPeliculaDTO) {
+    setElementoArrastrado(actor);
+  }
+
+  function manejarDragOver(actor: ActorPeliculaDTO) {
+    if (!elementoArrastrado) return;
+    if (actor.id !== elementoArrastrado.id) {
+      const elementoIndice = actoresProps.findIndex(
+        (x) => x.id === elementoArrastrado.id
+      );
+      const actorIndice = actoresProps.findIndex((x) => x.id === actor.id);
+
+      const actores = [...actoresProps];
+      actores[actorIndice] = elementoArrastrado;
+      actores[elementoIndice] = actor;
+      onAdd(actores);
+    }
+  }
+
+  return (
+    <>
+      <label>Actores</label>
+      <Typeahead
+        id="typeahead"
+        onChange={(actores) => {
+          if (actoresProps.findIndex((x) => x.id === actores[0].id) === -1) {
+            onAdd([...actoresProps, actores[0]]);
+          }
+        }}
+        options={actores}
+        labelKey={(actor) => actor.nombre}
+        filterBy={["nombre"]}
+        placeholder="Escriba el nombre del actor..."
+        minLength={2}
+        selected={seleccion}
+        renderMenuItemChildren={(actor) => (
+          <>
+            <img
+              alt="Imagen actor"
+              src={actor.foto}
+              style={{ height: "64px", marginRight: "10px", width: "64px" }}
+            />
+            <span>{actor.nombre}</span>
+          </>
+        )}
+      />
+
+      <ul className="list-group">
+        {actoresProps.map((actor) => (
+          <li
+            draggable={true}
+            onDragStart={() => manejarDragStart(actor)}
+            onDragOver={() => manejarDragOver(actor)}
+            className="list-group-item list-group-item-action"
+            key={actor.id}
+          >
+            {listadoUI(actor)}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}

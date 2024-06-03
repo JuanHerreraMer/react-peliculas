@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+form > a {
+  margin-left: 1rem;
+}
+
+.pointer:hover{
+  cursor: pointer;
+}
