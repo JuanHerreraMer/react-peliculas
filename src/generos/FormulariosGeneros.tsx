@@ -12,7 +12,8 @@ export const FormulariosGeneros = (props: Props) => {
         initialValues={props.modelo}
         onSubmit={props.onSubmit}
         validationSchema={Yup.object({
-          nombre: Yup.string().required("Este campo es requerido"),
+          nombre: Yup.string().required("Este campo es requerido")
+          .max(50, 'La longitud máxima es de 50 caracteres')
           // .primeraLetraMayuscula(),
         })}
       >
