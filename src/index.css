@@ -9,3 +9,7 @@ form > a {
 .pointer:hover{
   cursor: pointer;
 }
+
+.table a {
+  margin-right: 1rem;
+}
