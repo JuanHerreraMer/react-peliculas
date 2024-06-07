@@ -21,6 +21,7 @@
     "react-leaflet": "4.2.1",
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.23.1",
+    "sweetalert2": "^11.11.1",
     "typed-react-markdown": "^0.1.0",
     "yup": "^0.32.9"
   },
