@@ -22,12 +22,14 @@ export const EditarGenero = (props: Props) => {
   });
 
   async function editar(generoEditar: generoCreacionDTO) {
+
     try {
       await axios.put(`${urlGeneros}/${id}`, generoEditar);
       history("/generos");
     } catch (error) {
       setErrores(error.response.data);
     }
+    
   }
 
   return (
